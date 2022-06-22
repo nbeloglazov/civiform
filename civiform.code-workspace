@@ -1,27 +1,72 @@
 {
 	"folders": [
-		{
-			"path": "server"
+    {
+      "path": "."
 		},
-		{
-			"path": "."
-		}
+    {
+      "path": "server"
+    }
 	],
 	"settings": {
 		"files.watcherExclude": {
-			"**/target": true,
-			"**/.bloop": true
-		},
+      "**/.bloop": true,
+      "**/.metals": true,
+      "**/.ammonite": true,
+      "**/target": true
+    },
 		"search.exclude": {
-			"*/target": true,
-			"**/.bloop": true
-		},
-		"java.configuration.updateBuildConfiguration": "automatic"
+      "**/logs": true,
+      "**/node_modules": false,
+      "**/target": true
+    },
+    "files.exclude": {
+      "**/.bloop": true,
+      "**/.ammonite": true,
+      "**/.metals": true,
+      "**/node_modules": true,
+      "node_modules": true,
+      "**/sbt_cache": true
+    },
+    "editor.tabSize": 2,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "yaml.customTags": [
+      "!Equals sequence",
+      "!FindInMap sequence",
+      "!GetAtt",
+      "!GetAZs",
+      "!ImportValue",
+      "!Join sequence",
+      "!Ref",
+      "!Select sequence",
+      "!Split sequence",
+      "!Sub"
+    ],
+    // Formatters
+    "[java]": {
+      "editor.defaultFormatter": "ilkka.google-java-format"
+    },
+
   },
   "extensions": {
     "recommendations": [
+      "editorconfig.editorconfig",
+      "eamodio.gitlens",
+      "github.vscode-pull-request-github",
+      "knisterpeter.vscode-github",
+      "ms-azuretools.vscode-docker",
+      "hashicorp.terraform",
+      "ms-ossdata.vscode-postgresql",
+      "bradlc.vscode-tailwindcss",
+      "scala-lang.scala",
+      "redhat.vscode-yaml",
       "dbaeumer.vscode-eslint",
-      "rvest.vs-code-prettier-eslint"
+      "redhat.java",
+      "rvest.vs-code-prettier-eslint",
+      "ms-python.python",
+      "scalameta.metals",
+      "ilkka.google-java-format"
     ]
   }
 }

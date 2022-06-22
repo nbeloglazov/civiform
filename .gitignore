@@ -1,22 +1,20 @@
-/project/
-flakes
+# Generated directories
+project/
 logs/
-server/code-coverage/*
+flakes
+server/code-coverage
 .log/
 target/
-RUNNING_PID
-.Dockerfile.swp
-.idea/
-*.swp
-.bsp/
-.DS_Store
-.secrets
 node_modules
-bundle.js
 tailwind.css
+
+.secrets
+bundle.js
 .dockerlogs
 *.pem
+*.pyc
 
+# Terraform files
 *.terraform
 *.terraform.lock.hcl
 *.tfvars
@@ -26,20 +24,28 @@ tailwind.css
 !*example.auto.tfvars
 terraform.tfstate**
 .terraform.tfstate**
-*.pyc
 
+# SBT Files
 sbt_cache/*
 !sbt_cache/.keep
 /browser-test/sbt_cache/*
 !/browser-test/sbt_cache/.keep
 test-support/sbt_cache/
+!/test-support/sbt_cache/.keep
+.classpath
+.project
+.data
+.metals/
+.bloop/
+.ammonite/
+metals.sbt
 
-*/.classpath
-*/.vscode
-*/.project
-**/.data
-**/.metals/
-**/.bloop/
-**/.ammonite/
-**/metals.sbt
-**/pom.xml
+# IDE Files
+.vscode
+pom.xml
+pom.bkp
+.idea/
+*.swp
+RUNNING_PID
+.bsp/
+.DS_Store

@@ -18,6 +18,7 @@ COPY .eslintrc.json /.eslintrc.json
 COPY .eslintignore /.eslintignore
 COPY .editorconfig /.editorconfig
 COPY .shellcheckrc /.shellcheckrc
+COPY .style.yapf /.style.yapf
 
 COPY formatter/fmt /fmt
 

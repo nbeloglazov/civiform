@@ -1,6 +1,6 @@
 {
   "recommendations": [
-    "vscjava.vscode-java-pack",
+    "editorconfig.editorconfig",
     "eamodio.gitlens",
     "github.vscode-pull-request-github",
     "knisterpeter.vscode-github",
@@ -11,6 +11,10 @@
     "scala-lang.scala",
     "redhat.vscode-yaml",
     "dbaeumer.vscode-eslint",
-    "rvest.vs-code-prettier-eslint"
+    "redhat.java",
+    "rvest.vs-code-prettier-eslint",
+    "ms-python.python",
+    "scalameta.metals",
+    "ilkka.google-java-format"
   ]
 }
