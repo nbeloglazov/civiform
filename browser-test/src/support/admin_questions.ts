@@ -30,7 +30,7 @@ export class AdminQuestions {
     await this.expectAdminQuestionsPage()
   }
 
-  async goToViewQuestionPage(questionName: string) {
+  async goToViewQuestionPage(_questionName: string) {
     await this.gotoAdminQuestionsPage()
     await this.page.click('text=View')
     await waitForPageJsLoad(this.page)
@@ -45,7 +45,7 @@ export class AdminQuestions {
     expect(await this.page.innerText('h1')).toEqual('All Questions')
   }
 
-  async expectViewOnlyQuestion(questionName: string) {
+  async expectViewOnlyQuestion(_questionName: string) {
     expect(await this.page.isDisabled('text=No Export')).toEqual(true)
     // TODO(sgoldblatt): This test does not find any questions need to look into
     // expect(await this.page.isDisabled(`text=${questionName}`)).toEqual(true)
@@ -533,6 +533,7 @@ export class AdminQuestions {
       questionText,
       helpText,
       enumeratorName,
+      exportOption
     })
 
     await this.expectAdminQuestionsPageWithCreateSuccessToast()
@@ -575,7 +576,6 @@ export class AdminQuestions {
     description = 'static description',
     questionText = 'static question text',
     enumeratorName = AdminQuestions.DOES_NOT_REPEAT_OPTION,
-    exportOption = '',
   }: QuestionParams) {
     await this.gotoAdminQuestionsPage()
 
@@ -673,6 +673,7 @@ export class AdminQuestions {
       questionText,
       helpText,
       enumeratorName,
+      exportOption
     })
 
     await this.expectAdminQuestionsPageWithCreateSuccessToast()

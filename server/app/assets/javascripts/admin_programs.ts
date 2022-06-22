@@ -96,6 +96,7 @@ class AdminPrograms {
 
   static async copyProgramLinkToClipboard(programLink: string) {
     const succeeded = await AdminPrograms.tryCopyToClipboard(programLink)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const toastController = window['toastController'] as any
     if (succeeded) {
       toastController.showToastMessage({

@@ -322,4 +322,5 @@ class PreviewController {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 const previewController = new PreviewController()
