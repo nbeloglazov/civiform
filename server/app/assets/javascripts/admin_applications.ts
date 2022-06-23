@@ -20,7 +20,6 @@ class AdminApplications {
       AdminApplications.CARD_SELECTOR,
     ) as any as Array<HTMLElement> // eslint-disable-line @typescript-eslint/no-explicit-any
 
-
     this.registerApplicationCardEventListeners()
   }
 

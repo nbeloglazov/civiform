@@ -81,7 +81,7 @@ class AzureUploadController {
       fileName: this.getValueFromInputLabel('fileName'),
     }
   }
-/* eslint-disable  @typescript-eslint/no-explicit-any */
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   private setFileUploadMetadata(
     redirectUrl: URL,
     azureUploadProps: any,

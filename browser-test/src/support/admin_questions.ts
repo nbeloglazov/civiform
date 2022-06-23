@@ -533,7 +533,7 @@ export class AdminQuestions {
       questionText,
       helpText,
       enumeratorName,
-      exportOption
+      exportOption,
     })
 
     await this.expectAdminQuestionsPageWithCreateSuccessToast()
@@ -673,7 +673,7 @@ export class AdminQuestions {
       questionText,
       helpText,
       enumeratorName,
-      exportOption
+      exportOption,
     })
 
     await this.expectAdminQuestionsPageWithCreateSuccessToast()
