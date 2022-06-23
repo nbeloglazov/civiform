@@ -16,11 +16,17 @@ module "vpc" {
 }
 
 resource "aws_db_subnet_group" "civiform" {
+  tags = {
+    Name = "Civiform DB Subnet"
+  }
   name       = "${var.app_prefix}-civiform"
   subnet_ids = module.vpc.private_subnets
 }
 
 resource "aws_security_group" "rds" {
+  tags = {
+    Name = "Civiform DB Security Group"
+  }
   name   = "${var.app_prefix}-civiform_rds"
   vpc_id = module.vpc.vpc_id
 
@@ -40,6 +46,9 @@ resource "aws_security_group" "rds" {
 }
 
 resource "aws_apprunner_vpc_connector" "connector" {
+  tags = {
+    Name = "Civiform Apprunner VPC Connector"
+  }
   vpc_connector_name = "${var.app_prefix}-civiform_connector"
   subnets            = module.vpc.private_subnets
   security_groups    = [aws_security_group.rds.id]

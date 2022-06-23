@@ -1,5 +1,8 @@
 resource "aws_s3_bucket" "backend_state_bucket" {
-  bucket = "${var.app_prefix}-backendstate"
+  tags = {
+    Name = "Civiform Backend State Bucket"
+  }
+  bucket        = "${var.app_prefix}-backendstate"
 }
 
 resource "aws_s3_bucket_versioning" "backend_state_versioning" {
@@ -10,6 +13,9 @@ resource "aws_s3_bucket_versioning" "backend_state_versioning" {
 }
 
 resource "aws_kms_key" "backend_storage_key" {
+  tags = {
+    Name = "Civiform Backend Storage Key"
+  }
   description             = "This key is used to encrypt backend state bucket objects"
   deletion_window_in_days = 10
 }
@@ -54,6 +60,9 @@ data "aws_iam_policy_document" "backend_state_files_policy" {
 }
 
 resource "aws_dynamodb_table" "state_locking" {
+  tags = {
+    Name = "Civiform DynamoDB State Lock"
+  }
   hash_key = "LockID"
   name     = "${var.app_prefix}-locktable"
   attribute {

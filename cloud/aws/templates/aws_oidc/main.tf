@@ -5,6 +5,9 @@ module "secrets" {
 }
 
 resource "aws_apprunner_service" "civiform_dev" {
+  tags = {
+    Name = "Civiform Server"
+  }
   auto_scaling_configuration_arn = aws_apprunner_auto_scaling_configuration_version.auto_scaling_config.arn
   service_name                   = "${var.app_prefix}-civiform_dev"
 
@@ -70,6 +73,10 @@ resource "aws_apprunner_service" "civiform_dev" {
 # List of params that we could configure:
 # https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.Parameters.html#Appendix.PostgreSQL.CommonDBATasks.Parameters.parameters-list
 resource "aws_db_parameter_group" "civiform" {
+  tags = {
+    Name = "Civiform DB Parameters"
+  }
+
   name   = "${var.app_prefix}-civiform"
   family = "postgres12"
 
@@ -80,6 +87,10 @@ resource "aws_db_parameter_group" "civiform" {
 }
 
 resource "aws_db_instance" "civiform" {
+  tags = {
+    Name = "Civiform Database"
+  }
+
   identifier              = "${var.app_prefix}-${var.postgress_name}"
   instance_class          = var.postgres_instance_class
   allocated_storage       = var.postgres_storage_gb

@@ -4,6 +4,10 @@ data "aws_route53_zone" "civiform" {
 }
 
 resource "aws_route53_record" "civiform_domain_record" {
+  tags = {
+    Name = "Civiform Domain Record"
+  }
+
   name    = var.custom_subdomain
   zone_id = data.aws_route53_zone.civiform.zone_id
   type    = "CNAME"
@@ -11,10 +15,14 @@ resource "aws_route53_record" "civiform_domain_record" {
   ttl     = 60
 }
 
-# this updates CNAME records with certificates. 
+# this updates CNAME records with certificates.
 # The records are only known after AppRunner is up and associated with custom domain.
 # to make this work we need to run terraform apply -target aws_apprunner_custom_domain_association.civiform_domain first
 resource "aws_route53_record" "civiform_domain_validation" {
+  tags = {
+    Name = "Civiform Domain Validation"
+  }
+
   for_each = {
     for dvo in aws_apprunner_custom_domain_association.civiform_domain.certificate_validation_records : dvo.name => {
       name   = dvo.name
@@ -32,6 +40,10 @@ resource "aws_route53_record" "civiform_domain_validation" {
 
 
 resource "aws_apprunner_custom_domain_association" "civiform_domain" {
+  tags = {
+    Name = "Civiform Domain"
+  }
+
   domain_name = "staging-aws.civiform.dev"
   service_arn = var.apprunner_arn
 }

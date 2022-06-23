@@ -24,14 +24,14 @@ class Setup(SetupTemplate):
 
     def _run_tf_to_setup(self):
         template_dir = os.path.join(self.config.get_template_dir(), 'setup')
-        print(" - Copy the tfvars file into the setup dir")
+        print(" - Copy the setup tfvars file into the setup dir")
         shutil.copy2(
             os.path.join(
                 self.config.get_template_dir(), self.config.tfvars_filename),
             os.path.join(
                 self.config.get_template_dir(), 'setup',
                 self.config.tfvars_filename))
-        print(" - Run terraform init")
+        print(" - Run the setup terraform init")
         subprocess.check_call(
             [
                 "terraform",
@@ -48,7 +48,7 @@ class Setup(SetupTemplate):
         if not self.config.is_dev():
             tf_apply_args.append("-auto-approve")
 
-        print(" - Run terraform apply")
+        print(" - Run the setup terraform apply")
         subprocess.check_call(tf_apply_args)
 
     def _setup_shared_state_file(self):
