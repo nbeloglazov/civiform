@@ -10,7 +10,7 @@ variable "civiform_image_repo" {
   default     = "public.ecr.aws/t1q6b4h2/universal-application-tool"
 }
 
-variable "civiform_image_tag" {
+variable "image_tag" {
   type        = string
   description = "Image tag of the Civiform docker image to deploy"
   default     = "prod"

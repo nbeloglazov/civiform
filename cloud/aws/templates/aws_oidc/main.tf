@@ -43,7 +43,7 @@ resource "aws_apprunner_service" "civiform_dev" {
         }
       }
 
-      image_identifier      = "${var.civiform_image_repo}:${var.civiform_image_tag}"
+      image_identifier      = "${var.civiform_image_repo}:${var.image_tag}"
       image_repository_type = "ECR_PUBLIC"
     }
 
