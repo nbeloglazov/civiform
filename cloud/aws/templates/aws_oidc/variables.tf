@@ -178,6 +178,7 @@ variable "port" {
   type        = string
   description = "Port the app is running on"
   default     = "9000"
+}
 
 variable "civiform_mode" {
   type        = string
