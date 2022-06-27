@@ -9,7 +9,6 @@ def perform_apply(config_loader):
     '''Generates terraform variable files and runs terraform init and apply.'''
 
     terraform_template_dir = config_loader.get_template_dir()
-    app_prefix = config_loader.app_prefix()
     tf_vars_filename = config_loader.tfvars_filename
 
     terraform_cmd = f'terraform -chdir={terraform_template_dir}'
@@ -19,10 +18,10 @@ def perform_apply(config_loader):
         subprocess.check_call(
             shlex.split(f'{terraform_cmd} init -upgrade -reconfigure'))
     else:
-        print(" - Run terraform init -upgrade")
+        print(" - Run terraform init -upgrade -reconfigure")
         subprocess.check_call(
             shlex.split(
-                f'{terraform_cmd} init -input=false -upgrade -backend-config={os.getenv("BACKEND_VARS_FILENAME")}'
+                f'{terraform_cmd} init -input=false -upgrade -reconfigure -backend-config={os.getenv("BACKEND_VARS_FILENAME")}'
             ))
 
     if os.path.exists(os.path.join(terraform_template_dir, tf_vars_filename)):
@@ -51,14 +50,14 @@ def perform_apply(config_loader):
     else:
         subprocess.check_call(
             shlex.split(
-                f'{terraform_apply_cmd} -auto-approve {terraform_plan_out_file}'
+                f'{terraform_apply_cmd} {terraform_plan_out_file}'
             ))
 
     return True
 
 
 def copy_backend_override(config_loader):
-    ''' 
+    '''
     Copies the terraform backend_override to backend_override.tf (used to
     make backend local instead of a shared state for dev deploys)
     '''

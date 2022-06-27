@@ -70,6 +70,7 @@ try:
         f"-chdir={terraform_template_dir}",
         "init",
         "-upgrade",
+        "-migrate-state"
     ]
     if config_loader.use_backend_config():
         print(f"Using backend config {config_loader.backend_vars_filename}")

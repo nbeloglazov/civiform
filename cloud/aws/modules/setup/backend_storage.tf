@@ -2,8 +2,12 @@ resource "aws_s3_bucket" "backend_state_bucket" {
   tags = {
     Name = "Civiform Backend State Bucket"
   }
-  bucket        = "${var.app_prefix}-backendstate"
+  bucket = "${var.app_prefix}-backendstate"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
+
 
 resource "aws_s3_bucket_versioning" "backend_state_versioning" {
   bucket = aws_s3_bucket.backend_state_bucket.id

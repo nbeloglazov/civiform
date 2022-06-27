@@ -1,4 +1,8 @@
 resource "aws_s3_bucket" "civiform_files_s3" {
+  tags = {
+    Name = "Civiform Files"
+  }
+
   bucket = "${var.app_prefix}-${var.file_storage_bucket}"
 }
 

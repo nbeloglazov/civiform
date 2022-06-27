@@ -154,12 +154,58 @@ variable "app_prefix" {
 
 variable "applicant_oidc_provider_name" {
   type        = string
-  description = "OIDC provider name for the applicant"
+  description = "Applicant OIDC login provider name"
+}
+
+variable "applicant_oidc_response_mode" {
+  type        = string
+  description = "Applicant OIDC login response mode"
+}
+
+variable "applicant_oidc_response_type" {
+  type        = string
+  description = "Applicant OIDC login response type"
+}
+
+variable "applicant_oidc_additional_scopes" {
+  type        = string
+  description = "Applicant OIDC login additional scopes to request"
+}
+
+variable "applicant_oidc_locale_attribute" {
+  type        = string
+  description = "Applicant OIDC login user locale returned in token"
+}
+
+variable "applicant_oidc_email_attribute" {
+  type        = string
+  description = "Applicant OIDC login user email returned in token"
+}
+
+variable "applicant_oidc_first_name_attribute" {
+  type        = string
+  description = "Applicant OIDC login first name (or display name) returned in token"
+}
+
+variable "applicant_oidc_middle_name_attribute" {
+  type        = string
+  description = "Applicant OIDC login middle name (if not using display name) returned in token"
+}
+
+variable "applicant_oidc_last_name_attribute" {
+  type        = string
+  description = "Applicant OIDC login last name (if not using display name) returned in token"
 }
 
 variable "civiform_applicant_idp" {
   type        = string
   description = "Applicant IDP"
+}
+
+variable "custom_hostname" {
+  type        = string
+  description = "The custom hostname this app is deployed on"
+  default     = "staging-aws.civiform.dev"
 }
 
 variable "staging_hostname" {
@@ -170,8 +216,7 @@ variable "staging_hostname" {
 
 variable "base_url" {
   type        = string
-  description = "Base url for the app"
-  default     = "https://staging-aws.civiform.dev"
+  description = "Base url for the app, only need to set if you don't have a custom hostname setup"
 }
 
 variable "port" {

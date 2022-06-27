@@ -25,7 +25,7 @@ resource "aws_apprunner_service" "civiform_dev" {
           DB_PASSWORD    = aws_db_instance.civiform.password
 
           STAGING_HOSTNAME = var.staging_hostname
-          BASE_URL         = var.base_url
+          BASE_URL         = var.base_url != "" ? var.base_url : var.custom_hostname
 
           STORAGE_SERVICE_NAME = "s3"
           AWS_S3_BUCKET_NAME   = aws_s3_bucket.civiform_files_s3.id
@@ -44,11 +44,19 @@ resource "aws_apprunner_service" "civiform_dev" {
           STAGING_TI_LIST        = var.staging_ti_notification_mailing_list
           STAGING_APPLICANT_LIST = var.staging_applicant_notification_mailing_list
 
-          APPLICANT_OIDC_PROVICER_NAME = var.applicant_oidc_provider_name
-          CIVIFORM_APPLICANT_IDP       = var.civiform_applicant_idp
-          APPLICANT_OIDC_CLIENT_ID     = module.secrets.oidc_client_id
-          APPLICANT_OIDC_CLIENT_SECRET = module.secrets.oidc_secret
-          APPLICANT_OIDC_DISCOVERY_URI = module.secrets.oidc_discovery_uri
+          APPLICANT_OIDC_PROVIDER_NAME         = var.applicant_oidc_provider_name
+          CIVIFORM_APPLICANT_IDP               = var.civiform_applicant_idp
+          APPLICANT_OIDC_CLIENT_ID             = module.secrets.applicant_oidc_client_id
+          APPLICANT_OIDC_CLIENT_SECRET         = module.secrets.applicant_oidc_client_secret
+          APPLICANT_OIDC_DISCOVERY_URI         = module.secrets.applicant_oidc_discovery_uri
+          APPLICANT_OIDC_RESPONSE_MODE         = var.applicant_oidc_response_mode
+          APPLICANT_OIDC_RESPONSE_TYPE         = var.applicant_oidc_response_type
+          APPLICANT_OIDC_ADDITIONAL_SCOPES     = var.applicant_oidc_additional_scopes
+          APPLICANT_OIDC_LOCALE_ATTRIBUTE      = var.applicant_oidc_locale_attribute
+          APPLICANT_OIDC_EMAIL_ATTRIBUTE       = var.applicant_oidc_email_attribute
+          APPLICANT_OIDC_FIRST_NAME_ATTRIBUTE  = var.applicant_oidc_first_name_attribute
+          APPLICANT_OIDC_MIDDLE_NAME_ATTRIBUTE = var.applicant_oidc_middle_name_attribute
+          APPLICANT_OIDC_LAST_NAME_ATTRIBUTE   = var.applicant_oidc_last_name_attribute
         }
       }
 

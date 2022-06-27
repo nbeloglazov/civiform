@@ -28,6 +28,7 @@ cloud/**/backend_vars
 terraform.tfstate**
 .terraform.tfstate**
 *.pyc
+terraform_plan
 
 sbt_cache/*
 !sbt_cache/.keep
