@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "civiform_image_repo" {
   type        = string
   description = "Public ECR repository with Civiform images"
-  default     = "public.ecr.aws/t1q6b4h2/universal-application-tool"
+  default     = "public.ecr.aws/e4t4a0t0/civiform/civiform"
 }
 
 variable "image_tag" {
