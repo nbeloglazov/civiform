@@ -71,6 +71,7 @@ try:
         "init",
         "-input=false",
         "-upgrade",
+        "-migrate-state"
     ]
     if config_loader.use_backend_config():
         print(f"Using backend config {config_loader.backend_vars_filename}")

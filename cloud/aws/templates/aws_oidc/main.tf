@@ -100,12 +100,12 @@ resource "aws_db_parameter_group" "civiform" {
 }
 
 resource "aws_db_instance" "civiform" {
-  identifier              = "${var.app_prefix}-${var.postgress_name}"
   tags = {
     Name = "${var.app_prefix} Civiform Database"
     Type = "Civiform Database"
   }
 
+  identifier              = "${var.app_prefix}-${var.postgress_name}-db"
   instance_class          = var.postgres_instance_class
   allocated_storage       = var.postgres_storage_gb
   engine                  = "postgres"
