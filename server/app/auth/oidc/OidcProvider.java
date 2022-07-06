@@ -18,6 +18,8 @@ import org.pac4j.core.profile.creator.ProfileCreator;
 import org.pac4j.oidc.client.OidcClient;
 import org.pac4j.oidc.config.OidcConfiguration;
 import repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class provides the base applicant OIDC implementation. It's abstract because AD and other
@@ -30,6 +32,7 @@ public abstract class OidcProvider implements Provider<OidcClient> {
   protected final ProfileFactory profileFactory;
   protected final Provider<UserRepository> applicantRepositoryProvider;
   protected final String baseUrl;
+  private static final Logger logger = LoggerFactory.getLogger(OidcProvider.class);
 
   public OidcProvider(
       Config configuration,
@@ -205,6 +208,8 @@ public abstract class OidcProvider implements Provider<OidcClient> {
       logger.error("Error while initilizing OIDC provider", e);
       throw e;
     }
+
+    logger.debug("Oidc client: " + client.toString());
     return client;
   }
 }
